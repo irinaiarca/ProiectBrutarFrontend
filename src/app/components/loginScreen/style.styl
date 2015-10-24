@@ -1,0 +1,36 @@
+@import "../_variables";
+
+.wrapper
+    background white
+    padding: 25px;
+    border-radius: 4px;
+    min-width: 300px;
+    text-align: center;
+    box-shadow 0 4px 8px rgba(black, 0.2)
+    
+.greeting
+    margin: 0;
+    padding: 0;
+    font-size: 3em;
+    
+.description
+    margin 10px 0 30px
+
+.selectbox select
+    width 100%
+    border none
+    
+.passwordbox
+    opacity 0
+    height 0
+    overflow hidden
+    display block
+    transition all 0.5s ease-in-out
+    transition all 0.5s mdtiming
+    input
+        width 100%
+        border solid 1px #444
+    &.active
+        height: 50px;
+        opacity: 1;
+    
