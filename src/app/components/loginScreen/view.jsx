@@ -36,7 +36,9 @@ export default class LoginScreenView {
             <h4 className={this.styles.description}>{this.views.description}</h4>
             {this.views.selectbox}
             {this.views.passwordbox}
-            <Snackbar ref="chooseMessageSnackbar" />
+            <Snackbar ref="chooseMessageSnackbar" message="You must choose a user first!" />
+            <Snackbar ref="loggedInSnackbar" message="You have been logged in!" />
+            <Snackbar ref="wrongAuthenticationSnackbar" message="You have been entered a wrong password!" />
             <RaisedButton label="Login" style={{marginTop: "30px"}} onClick={this.attemptLogin} />
         </span>;
     }

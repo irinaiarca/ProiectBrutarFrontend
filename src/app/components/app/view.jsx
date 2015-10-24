@@ -4,7 +4,7 @@ import LoginScreen from "../loginScreen";
 export default class MainView {
     static render() {
         return <span className={this.styles.wrapper}>
-            {this.props.children}
+            {this.props.children || <span> It Works </span>}
         </span>;
     }
 }

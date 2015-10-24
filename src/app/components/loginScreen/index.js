@@ -55,25 +55,21 @@ export default class LoginScreenComponent extends BaseComponent {
     
     @selfbind
     attemptLogin() {
-        let sb = this.refs.chooseMessageSnackbar;
         if (this.state.currentMail === "") {
-            sb.props.message = "You must choose a user first!" ;;
-            return sb.show();
+            this.refs.chooseMessageSnackbar.show();
         }
         if (this.state.currentRole !== "admin") {
             this.props.dispatch(actions.main.setUser(
                 {name: this.state.currentName, email: this.state.currentMail, role: this.state.currentRole}
             ));
-            sb.props.message = "You're logged in!" ;
-            return sb.show();
+            this.refs.loggedInSnackbar.show();
         }
         if (this.state.currentRole === "admin") {
             jQuery.post(`https://baking-meth-sabinmarcu.c9.io/users/${this.state.currentMail}/authenticate`, {password: this.state.password}, (data) => {
-                sb.props.message = data ? "You have been authenticated and logged in!" : "Your password was incorrect!";
                 data && this.props.dispatch(actions.main.setUser(
                     {name: this.state.currentName, email: this.state.currentMail, role: this.state.currentRole}
                 ));
-                sb.show();
+                data ? this.refs.loggedInSnackbar.show() : this.refs.wrongAuthenticationSnackbar.show();
             });
         }
     }
